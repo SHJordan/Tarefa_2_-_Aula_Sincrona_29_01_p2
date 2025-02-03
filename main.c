@@ -1,7 +1,7 @@
 #include <stdio.h>
 #include "pico/stdlib.h"
 #include "hardware/gpio.h"
-#include "hardware/timer.h" // Biblioteca principal para temporização
+#include "hardware/timer.h"
 
 #define BOTAO_PIN 5
 #define LED_AZUL 11
@@ -17,7 +17,7 @@ typedef enum
 
 volatile bool sequencia_ativa = false;
 
-// Callback do alarme (usando timer.h)
+// Callback do alarme
 int64_t passo_callback(alarm_id_t id, void *user_data)
 {
     passo_t passo = (passo_t)user_data;
@@ -39,7 +39,7 @@ int64_t passo_callback(alarm_id_t id, void *user_data)
     return 0; // Retorno ignorado para alarmes não repetitivos
 }
 
-// Debounce com timer.h (substitui sleep_ms)
+// Debounce do botão
 int64_t debounce_callback(alarm_id_t id, void *user_data)
 {
     uint gpio = (uint)user_data;
@@ -82,7 +82,7 @@ int main()
 
     while (true)
     {
-        // Loop principal sem bloqueios (não usa sleep_ms)
-        tight_loop_contents();
+        // Loop principal sem bloqueios
+        tight_loop_contents(); // CPU entra em modo de espera
     }
 }
