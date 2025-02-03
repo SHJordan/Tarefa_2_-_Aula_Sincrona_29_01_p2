@@ -1,0 +1,4 @@
+[wokwi]
+version = 1
+firmware = 'build/Tarefa_2_-_Aula_Sincrona_29_01_p2.hex'
+elf = 'build/Tarefa_2_-_Aula_Sincrona_29_01_p2.uf2'
